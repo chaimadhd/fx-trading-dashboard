@@ -1,0 +1,45 @@
+# =========================
+# Java / Maven
+# =========================
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# =========================
+# Node / React
+# =========================
+frontend/node_modules/
+frontend/dist/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE
+# =========================
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# =========================
+# macOS
+# =========================
+.DS_Store
+
+# =========================
+# Build / temporary files
+# =========================
+build/
+*.tmp
+*.temp

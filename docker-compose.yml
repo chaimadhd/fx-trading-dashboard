@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: fx-trading-postgres
+    environment:
+      POSTGRES_DB: fxtrading
+      POSTGRES_USER: fxuser
+      POSTGRES_PASSWORD: fxpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: fx-trading-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/fxtrading
+      SPRING_DATASOURCE_USERNAME: fxuser
+      SPRING_DATASOURCE_PASSWORD: fxpassword
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: fx-trading-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
